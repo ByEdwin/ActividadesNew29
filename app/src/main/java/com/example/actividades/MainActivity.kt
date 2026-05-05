@@ -9,23 +9,37 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.actividades.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
         binding.btnSend.setOnClickListener {
-            val intent = Intent(this, SecondaryActivity::class.java)
+
+            val miHeroe = Heroe(
+                nombre = "Mark",
+                nivel = 1,
+                vida = 100
+            )
+
+            val intent = Intent(this, SecondaryActivity::class.java).apply {
+                putExtra("USER_NAME", binding.txtName.text.toString())
+                putExtra("USER_AGE", 20)
+                putExtra("IS_STUDENT", true)
+                putExtra("USER_HEROE", miHeroe)
+            }
+
             startActivity(intent)
         }
     }
