@@ -29,12 +29,12 @@ class SecondaryActivity : AppCompatActivity() {
         val heroe = intent.getParcelableExtra<Heroe>("USER_HEROE")
 
         heroe?.let {
-            binding.txtNombre.text = it.nombre
-            binding.txtNivel.text = "Nivel: ${it.nivel}"
-            binding.txtVida.text = "Vida: ${it.vida}"
+           // binding.txtNombre.text = it.nombre
+           // binding.txtNivel.text = "Nivel: ${it.nivel}"
+          //  binding.txtVida.text = "Vida: ${it.vida}"
         }
 
-        binding.tvwName.text= miHeroe?.nombre
+        // binding.tvwName.text= miHeroe?.nombre
 
         binding.tvwName.text = bundle?.getString("USER_NAME")
        binding.tvwEdad.text = bundle?.getInt("USER_AGE").toString()

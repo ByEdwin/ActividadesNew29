@@ -1,10 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
-    plugins {
-        id("kotlin-parcelize")
-    }
+    id("kotlin-parcelize")
 }
-
 android {
     namespace = "com.example.actividades"
     compileSdk {
